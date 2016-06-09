@@ -6,8 +6,8 @@ class StockSpider(BaseSpider):
     name = "stock"
     allowed_domains = ["finance.daum.net"]
     start_urls = [
-        "http://finance.daum.net/quote/all.daum?type=U&stype=P",
-        "http://finance.daum.net/quote/all.daum?type=U&stype=Q",
+        "http://finance.daum.net/quote/all.daum?type=S&stype=P",
+        "http://finance.daum.net/quote/all.daum?type=S&stype=Q"
     ]
 
     def parse(self, response):
