@@ -10,9 +10,12 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
 BOT_NAME = 'crawl'
+BOT_VERSION = '1.0'
+
 
 SPIDER_MODULES = ['crawl.spiders']
 NEWSPIDER_MODULE = 'crawl.spiders'
+USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -88,10 +91,8 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-ITEM_PIPELINES = [
-    'crawl.pipelines.MongoDBStorage',
-]
-MONGODB_SERVER = "localhost"
-MONGODB_PORT = 27017
-MONGODB_DB = "stock"
-MONGODB_COLLECTION = "items"
+ITEM_PIPELINES = {
+    'crawl.pipelines.MongoDBPipeline': 1,
+}
+MONGO_URI = "mongodb://localhost:27017"
+MONGO_DB = "stock"

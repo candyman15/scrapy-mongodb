@@ -1,12 +1,6 @@
 from scrapy.spider import BaseSpider
 from scrapy.selector import HtmlXPathSelector
-from scrapy.item import Item, Field
-
-
-class CrawlItem(Item):
-    stock_id = Field();
-    stock_name = Field();
-
+from crawl.items import CrawlItem
 
 class StockSpider(BaseSpider):
     name = "stock"
